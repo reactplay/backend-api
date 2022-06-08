@@ -13,21 +13,22 @@ query Fetch_Plays {
       id
       name
     }
-    level_id
     name
-    owner_user_id
     path
     play_tags {
       tag {
         id
         name
-        created_at
-        updated_at
       }
     }
     updated_at
     user {
       id
+      displayName
+      avatarUrl
+      userProviders {
+        accessToken
+      }
     }
     video
   }
