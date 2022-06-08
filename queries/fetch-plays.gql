@@ -1,4 +1,4 @@
-query MyQuery {
+query Fetch_Plays {
   plays {
     blog
     component
