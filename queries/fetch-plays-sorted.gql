@@ -1,0 +1,35 @@
+query Fetch_Plays {
+  plays(order_by: { created_at: asc }) {
+    blog
+    component
+    cover
+    created_at
+    description
+    featured
+    github
+    id
+    language
+    level {
+      id
+      name
+    }
+    name
+    path
+    play_tags {
+      tag {
+        id
+        name
+      }
+    }
+    updated_at
+    user {
+      id
+      displayName
+      avatarUrl
+      userProviders {
+        accessToken
+      }
+    }
+    video
+  }
+}
