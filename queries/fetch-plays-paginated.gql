@@ -1,5 +1,5 @@
 query Fetch_Plays {
-  plays {
+  plays(offset:2, limit:4) {
     blog
     component
     cover

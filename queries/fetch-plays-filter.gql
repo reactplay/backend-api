@@ -1,0 +1,253 @@
+
+# Filter all the featured plays
+
+query Fetch_Plays {
+  plays(where: {featured: {_eq: true}}) {
+    blog
+    component
+    cover
+    created_at
+    description
+    featured
+    owner_user_id
+    github
+    id
+    language
+    level {
+      id
+      name
+    }
+    name
+    path
+    play_tags {
+      tag {
+        id
+        name
+      }
+    }
+    updated_at
+    user {
+      id
+      displayName
+      avatarUrl
+      userProviders {
+        accessToken
+      }
+    }
+    video
+  }
+}
+
+# Filter Plays by a search string in name or description
+
+query Fetch_Plays {
+  plays(where: {
+      _or: [{ name: { _iregex: "why" } }, { description: { _iregex: "why" } }]
+    }) {
+    blog
+    component
+    cover
+    created_at
+    description
+    featured
+    owner_user_id
+    github
+    id
+    language
+    level {
+      id
+      name
+    }
+    name
+    path
+    play_tags {
+      tag {
+        id
+        name
+      }
+    }
+    updated_at
+    user {
+      id
+      displayName
+      avatarUrl
+      userProviders {
+        accessToken
+      }
+    }
+    video
+  }
+}
+
+# Filter Plays by Level
+
+query Fetch_Plays {
+  plays(where: {level: {name: {_eq: "Advanced"}}}){
+    blog
+    component
+    cover
+    created_at
+    description
+    featured
+    owner_user_id
+    github
+    id
+    language
+    level {
+      id
+      name
+    }
+    name
+    path
+    play_tags {
+      tag {
+        id
+        name
+      }
+    }
+    updated_at
+    user{
+      id
+      displayName
+      avatarUrl
+      userProviders {
+        accessToken
+      }
+    }
+    video
+  }
+}
+
+# Alternatively using the id
+
+query Fetch_Plays {
+  plays(where: {level_id:{_eq: "2af38a32-37a7-4456-b21b-bf6b3aedd804"}}){
+    blog
+    component
+    cover
+    created_at
+    description
+    featured
+    owner_user_id
+    github
+    id
+    language
+    level {
+      id
+      name
+    }
+    name
+    path
+    play_tags {
+      tag {
+        id
+        name
+      }
+    }
+    updated_at
+    user{
+      id
+      displayName
+      avatarUrl
+      userProviders {
+        accessToken
+      }
+    }
+    video
+  }
+}
+
+# Filter plays for a user, level, and a language
+
+query Fetch_Plays {
+  plays(where: {
+      _and: [
+        { owner_user_id: { _eq: "0680f581-6584-4bc4-bbe9-aa7c97567e72" } }, 
+        { level_id: { _eq: "4127ed16-bf37-4c34-bed0-282cd646cd53" } },
+        { language: { _eq: "ts" } }
+      ]
+    }){
+    blog
+    component
+    cover
+    created_at
+    description
+    featured
+    github
+    owner_user_id
+    id
+    language
+    level {
+      id
+      name
+    }
+    name
+    path
+    play_tags {
+      tag {
+        id
+        name
+      }
+    }
+    updated_at
+    user{
+      id
+      displayName
+      avatarUrl
+      userProviders {
+        accessToken
+      }
+    }
+    video
+  }
+}
+
+# Filter plays by level, user, language, and multiple tags
+
+query Fetch_Plays {
+  plays(where: {
+      _and: [
+        { owner_user_id: { _eq: "0680f581-6584-4bc4-bbe9-aa7c97567e72" } }, 
+        { level_id: { _eq: "4127ed16-bf37-4c34-bed0-282cd646cd53" } },
+        { language: { _eq: "js" } }
+      ]
+    }){
+    blog
+    component
+    cover
+    created_at
+    description
+    featured
+    github
+    owner_user_id
+    id
+    language
+    level {
+      id
+      name
+    }
+    name
+    path
+    play_tags(where: {
+      _or: [
+        { tag: {name: { _eq: "JSX" } }},
+        { tag: {name: { _eq: "Schedule" } }}
+      ]
+    }) {
+      tag {
+        id
+        name
+      }
+    }
+    updated_at
+    user{
+      id
+      displayName
+      avatarUrl
+      userProviders {
+        accessToken
+      }
+    }
+    video
+  }
+}

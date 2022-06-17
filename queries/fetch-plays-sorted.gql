@@ -1,5 +1,5 @@
 query Fetch_Plays {
-  plays {
+  plays(order_by: { created_at: asc }) {
     blog
     component
     cover
